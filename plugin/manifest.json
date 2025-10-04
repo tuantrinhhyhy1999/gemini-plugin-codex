@@ -1,0 +1,36 @@
+{
+  "manifestVersion": 5,
+  "id": "com.example.geminiphotoshop",
+  "name": "Gemini Image Studio",
+  "version": "1.0.0",
+  "host": {
+    "app": "PS",
+    "minVersion": "23.0.0"
+  },
+  "entryPoints": [
+    {
+      "type": "panel",
+      "id": "geminiPanel",
+      "label": "Gemini Studio",
+      "main": "index.html",
+      "defaultLocale": "vi",
+      "minimumSize": {
+        "width": 320,
+        "height": 720
+      },
+      "maximumSize": {
+        "width": 500,
+        "height": 1600
+      }
+    }
+  ],
+  "requiredPermissions": {
+    "network": {
+      "domains": [
+        "generativelanguage.googleapis.com"
+      ]
+    },
+    "filesystem": "fullAccess",
+    "clipboard": "readAndWrite"
+  }
+}

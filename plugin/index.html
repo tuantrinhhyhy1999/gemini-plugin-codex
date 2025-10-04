@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gemini Image Studio</title>
+    <link rel="stylesheet" href="https://unpkg.com/@spectrum-web-components/styles@0.33.8/dist/spectrum-global.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@spectrum-web-components/styles@0.33.8/dist/typography.css" />
+    <link rel="stylesheet" href="styles/panel.css" />
+  </head>
+  <body>
+    <main id="panel" class="spectrum spectrum--medium spectrum--dark">
+      <section class="header">
+        <h1 id="title">Gemini Image Studio</h1>
+        <div class="locale">
+          <label for="localeSelect" id="localeLabel">Ngôn ngữ</label>
+          <select id="localeSelect">
+            <option value="vi">Tiếng Việt</option>
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+          </select>
+        </div>
+        <div class="api-key">
+          <label for="apiKey" id="api-key-label">Gemini API Key</label>
+          <input type="password" id="apiKey" placeholder="AIza..." />
+          <button id="saveKey" class="spectrum-button">Lưu</button>
+        </div>
+        <div class="usage">
+          <span id="usageLabel">Sử dụng: --</span>
+          <button id="refreshUsage" class="spectrum-button spectrum-button--quiet">↻</button>
+        </div>
+      </section>
+
+      <sp-tabs selected="input">
+        <sp-tab value="input" id="tab-input">Ảnh đầu vào</sp-tab>
+        <sp-tab value="prompt" id="tab-prompt">Prompt</sp-tab>
+        <sp-tab value="presets" id="tab-presets">Preset</sp-tab>
+        <sp-tab value="results" id="tab-results">Kết quả</sp-tab>
+      </sp-tabs>
+      <sp-tab-panels selected="input">
+        <sp-tab-panel value="input">
+          <section class="section">
+            <div class="actions">
+              <button id="exportDocument" class="spectrum-button">Toàn bộ Canvas</button>
+              <button id="exportLayer" class="spectrum-button">Layer hiện tại</button>
+              <button id="quickLayer" class="spectrum-button spectrum-button--quiet">Quick Layer</button>
+            </div>
+            <div id="dropZone" class="drop-zone">
+              <p id="dropZoneLabel">Kéo thả ảnh vào đây</p>
+            </div>
+            <div id="referenceList" class="reference-list"></div>
+          </section>
+        </sp-tab-panel>
+        <sp-tab-panel value="prompt">
+          <section class="section">
+            <label for="promptInput" id="promptLabel">Prompt</label>
+            <textarea id="promptInput" rows="6"></textarea>
+            <label for="imageCount" id="imageCountLabel">Số lượng ảnh</label>
+            <input type="number" id="imageCount" min="1" max="4" value="1" />
+            <button id="generate" class="spectrum-button spectrum-button--cta">Generate</button>
+          </section>
+        </sp-tab-panel>
+        <sp-tab-panel value="presets">
+          <section class="section">
+            <div id="presetCategories" class="preset-categories"></div>
+            <h3 id="quickPresetTitle">Quick Presets</h3>
+            <div id="quickPresets" class="quick-presets"></div>
+          </section>
+        </sp-tab-panel>
+        <sp-tab-panel value="results">
+          <section class="section">
+            <div id="resultGrid" class="result-grid"></div>
+          </section>
+        </sp-tab-panel>
+      </sp-tab-panels>
+    </main>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
